@@ -1,0 +1,240 @@
+/*
+  Reinicio básico (opcional). Evita márgenes y rellenos por defecto del navegador
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+  Usamos flexbox para centrar el contenido en la pantalla
+  y ocupar toda la altura disponible.
+*/
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Fondo con un degradado suave */
+  background: linear-gradient(to right, #fdf2f2, #f9e8e8);
+  font-family: sans-serif;
+}
+
+/*
+  Contenedor principal con perspectiva 3D para que .envelope
+  pueda girar y verse en 3D.
+*/
+.envelope-container {
+  perspective: 1000px;
+  text-align: center;
+}
+
+/*
+  El sobre que gira, con dos caras: .envelope-front y .envelope-back
+*/
+.envelope {
+  width: 300px;
+  height: 200px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease; /* Duración de la rotación */
+  
+  /* 
+    Efecto de brillo en el borde (pulsante).
+    Ajusta la duración (3s), el blur y spread del box-shadow a tu gusto
+  */
+  animation: borderGlow 3s ease-in-out infinite;
+}
+
+/* 
+  Keyframes para el brillo en el borde de la carta.
+  - Crece el halo en 50%
+  - Vuelve a 0 en 100%
+*/
+@keyframes borderGlow {
+  0%, 100% {
+    box-shadow: 0 0 0px 0 rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 8px 10px rgba(255, 255, 255, 1.5);
+  }
+}
+
+/*
+  Cara frontal del sobre.
+  backface-visibility: hidden evita ver el reverso al rotar
+*/
+.envelope-front {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+/*
+  Simulación de la “solapa” frontal: color de fondo y sombra
+*/
+.flap {
+  width: 100%;
+  height: 100%;
+  background-color: #c14b3d;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/*
+  Texto "De: Moisés Canepa" en la esquina superior izquierda
+*/
+.sender {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/*
+  Texto "Para: Brillet Pérez" en la esquina superior derecha
+*/
+.recipient {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/*
+  Corazón blanco centrado, con animación de “latido” + cambio de color.
+*/
+.front-heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+
+  /* Dos animaciones simultáneas:
+     1) Latido (heartBeat)
+     2) Cambio de color (heartColor)
+  */
+  animation: heartBeat 1.5s ease-in-out infinite, heartColor 1.5s ease-in-out infinite;
+}
+
+/*
+  Keyframes para el latido:
+  - Inicia en escala 1
+  - A mitad escala 1.1
+  - Vuelve a 1
+*/
+@keyframes heartBeat {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/*
+  Keyframes para cambiar el color del corazón
+  - En 0% y 100%, blanco
+  - En 50%, rosado
+*/
+@keyframes heartColor {
+  0%, 100% {
+    color: #fff;
+  }
+  50% {
+    color: #ffbfc4; /* Tono rosado */
+  }
+}
+
+/*
+  Cara trasera de la carta, girada 180° para que inicialmente no se vea.
+*/
+.envelope-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+/*
+  La hoja interna (el contenido) que aparece dentro del sobre al abrirse.
+  Comienza oculta (opacity 0).
+  Agregamos un ligero giro (rotate) y desplazamiento (translateY).
+*/
+.letter {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+
+  /* Oculto inicialmente, con transición en opacidad y posición/rotación */
+  opacity: 0;
+  transform: translateY(10px) rotate(-2deg);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+/*
+  Al añadir .show, hacemos visible la hoja (opacity 1),
+  la movemos a su posición normal (translateY(0)), 
+  y la dejamos sin rotación (rotate(0)).
+*/
+.letter.show {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+/*
+  Cuando añadimos la clase "opened" al sobre, giramos la cara frontal
+  180° y así mostramos la cara trasera.
+*/
+.envelope.opened {
+  transform: rotateY(180deg);
+}
+
+/*
+  Estilos para el botón “Abrir”
+*/
+.open-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #c14b3d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+/*
+  Cambiamos el color del botón al hacer hover
+*/
+.open-button:hover {
+  background-color: #a63e32;
+}
+
+/* 
+  Ajustamos el tamaño de letra del texto escribiéndose para que sea más pequeño.
+  También ajustamos el interlineado si queremos un poco más de espacio.
+*/
+.typewriter {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10px;  
+  line-height: 1.4; 
+  margin-top: 10px; 
+}

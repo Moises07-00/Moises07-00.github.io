@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Codificación de caracteres para tildes y eñes -->
+  <meta charset="UTF-8" />
+  <!-- Vista responsiva en móviles -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Carta Interactiva</title>
+  
+  <!-- Hoja de estilos externa -->
+  <link rel="stylesheet" href="styles.css" />
+  
+  <!-- Librería de confeti (canvas-confetti) cargada desde un CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Contenedor que maneja la perspectiva 3D de la carta -->
+  <div class="envelope-container">
+    
+    <!-- Sobre que gira al abrir -->
+    <div class="envelope" id="envelope">
+      
+      <!-- Cara frontal del sobre -->
+      <div class="envelope-front">
+        <!-- Fondo de la carta -->
+        <div class="flap"></div>
+        
+        <!-- Esquina superior izquierda: "De" -->
+        <div class="sender">De: Moisés Canepa</div>
+        
+        <!-- Esquina superior derecha: "Para" -->
+        <div class="recipient">Para: Brillet Pérez</div>
+        
+        <!-- Corazón blanco centrado, con animación de latido -->
+        <div class="front-heart">♥</div>
+      </div>
+      
+      <!-- Cara trasera (interior) del sobre, donde está la hoja -->
+      <div class="envelope-back">
+        <div class="letter" id="letter">
+          <!-- Título fijo (si lo deseas) -->
+          <h2>¡Te amo!</h2>
+          
+          <!-- Contenedor para el texto que se irá escribiendo (efecto typewriter) -->
+          <p id="typedMessage" class="typewriter"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón que disparará la animación de abrir la carta -->
+    <button id="openBtn" class="open-button">Abrir</button>
+  </div>
+
+  <!-- Audio que se reproducirá al abrir la carta -->
+  <!-- Reemplaza "ruta-a-tu-audio.mp3" con tu propio archivo o enlace -->
+  <audio id="loveSong" src="/storage/emulated/0/Programación/HTML/CartaDeAmor/audio/Yeshua.mp3"></audio>
+
+  <!-- Archivo JavaScript con la lógica de la animación, confeti, música y typing -->
+  <script src="script.js"></script>
+</body>
+</html>
