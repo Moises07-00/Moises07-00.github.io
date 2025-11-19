@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piñatas Pro - Las Mejores Piñatas para tus Fiestas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>Piñatas Pro</h1>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="#personalizadas">Personalizadas</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h2>¡Las Piñatas Más Divertidas!</h2>
+            <p>Personalizadas para tus fiestas y eventos especiales</p>
+            <button class="cta-button" onclick="scrollToSection('catalogo')">Ver Catálogo</button>
+        </div>
+        <div class="hero-image">
+            <img src="https://via.placeholder.com/500x400/FF6B6B/FFFFFF?text=Piñata+Pro" alt="Piñata colorida">
+        </div>
+    </section>
+
+    <!-- Catálogo Section -->
+    <section id="catalogo" class="catalogo">
+        <div class="container">
+            <h2>Nuestro Catálogo</h2>
+            
+            <!-- Filtros por Categoría -->
+            <div class="categorias">
+                <button class="categoria-btn active" data-categoria="todas">Todas</button>
+                <button class="categoria-btn" data-categoria="superheroes">Superhéroes</button>
+                <button class="categoria-btn" data-categoria="princesas">Princesas</button>
+                <button class="categoria-btn" data-categoria="futbol">Fútbol</button>
+                <button class="categoria-btn" data-categoria="animales">Animales</button>
+                <button class="categoria-btn" data-categoria="anime">Anime y Caricatura</button>
+                <button class="categoria-btn" data-categoria="musica">Música</button>
+                <button class="categoria-btn" data-categoria="videojuegos">Videojuegos</button>
+            </div>
+            
+            <div class="catalogo-grid">
+                <!-- Las piñatas se cargarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Piñatas Personalizadas -->
+    <section id="personalizadas" class="personalizadas">
+        <div class="container">
+            <h2>Piñatas Personalizadas</h2>
+            <div class="personalizadas-content">
+                <div class="personalizadas-text">
+                    <h3>¿Tienes una idea específica?</h3>
+                    <p>Creamos piñatas únicas según tus necesidades. Personajes favoritos, temas especiales, ¡lo que imagines!</p>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Diseños exclusivos</li>
+                        <li><i class="fas fa-check"></i> Alta calidad</li>
+                        <li><i class="fas fa-check"></i> Entrega rápida</li>
+                        <li><i class="fas fa-check"></i> Precios competitivos</li>
+                    </ul>
+                    <button class="cta-button" onclick="openContactModal()">Solicitar Cotización</button>
+                </div>
+                <div class="personalizadas-image">
+                    <img src="https://via.placeholder.com/400x300/4ECDC4/FFFFFF?text=Personalizada" alt="Piñata personalizada">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nosotros Section -->
+    <section id="nosotros" class="nosotros">
+        <div class="container">
+            <h2>Sobre Piñatas Pro</h2>
+            <div class="nosotros-content">
+                <div class="nosotros-text">
+                    <p>Con más de 5 años de experiencia, en Piñatas Pro nos especializamos en crear las piñatas más divertidas y creativas para tus eventos. Nuestra pasión es hacer que cada fiesta sea memorable.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>500+</h3>
+                            <p>Piñatas vendidas</p>
+                        </div>
+                        <div class="stat">
+                            <h3>98%</h3>
+                            <p>Clientes satisfechos</p>
+                        </div>
+                        <div class="stat">
+                            <h3>24h</h3>
+                            <p>Entrega express</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <section id="contacto" class="contacto">
+        <div class="container">
+            <h2>Contáctanos</h2>
+            <div class="contacto-content">
+                <div class="contacto-info">
+                    <h3>Información de Contacto</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@pinataspro.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Ciudad de México, México</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <form class="contacto-form" id="contactForm">
+                    <input type="text" placeholder="Nombre" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Teléfono">
+                    <textarea placeholder="Mensaje" rows="5" required></textarea>
+                    <button type="submit">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Piñatas Pro. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal de Contacto -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeContactModal()">&times;</span>
+            <h3>Solicitar Cotización</h3>
+            <form id="quoteForm">
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Email" required>
+                <input type="tel" placeholder="Teléfono" required>
+                <textarea placeholder="Describe tu piñata personalizada..." rows="4" required></textarea>
+                <button type="submit">Enviar Solicitud</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Piñata -->
+    <div id="pinataModal" class="modal">
+        <div class="modal-content pinata-modal">
+            <span class="close-modal" onclick="closePinataModal()">&times;</span>
+            <div class="pinata-modal-content">
+                <div class="pinata-modal-image">
+                    <img id="modalPinataImage" src="" alt="Piñata">
+                </div>
+                <div class="pinata-modal-info">
+                    <h3 id="modalPinataTitle"></h3>
+                    <p id="modalPinataDescription"></p>
+                    
+                    <div class="medidas-section">
+                        <h4>Selecciona la medida:</h4>
+                        <div class="medidas-options">
+                            <label class="medida-option">
+                                <input type="radio" name="medida" value="65cm" data-precio="325">
+                                <span class="medida-checkmark"></span>
+                                <div class="medida-info">
+                                    <span class="medida-tamaño">65cm</span>
+                                    <span class="medida-precio">$325.00</span>
+                                </div>
+                            </label>
+                            
+                            <label class="medida-option">
+                                <input type="radio" name="medida" value="75cm" data-precio="375">
+                                <span class="medida-checkmark"></span>
+                                <div class="medida-info">
+                                    <span class="medida-tamaño">75cm</span>
+                                    <span class="medida-precio">$375.00</span>
+                                </div>
+                            </label>
+                            
+                            <label class="medida-option">
+                                <input type="radio" name="medida" value="85cm" data-precio="425">
+                                <span class="medida-checkmark"></span>
+                                <div class="medida-info">
+                                    <span class="medida-tamaño">85cm</span>
+                                    <span class="medida-precio">$425.00</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+         <!-- Modal de Pedido -->
+		<div id="pedidoModal" class="modal">
+		    <div class="modal-content pedido-modal">
+		        <span class="close-modal" onclick="closePedidoModal()">&times;</span>
+		        <h3>Completar Pedido</h3>
+		        <form id="pedidoForm">
+		            <div class="form-group">
+		                <label for="nombreCliente">Nombre Completo *</label>
+		                <input type="text" id="nombreCliente" placeholder="Ingresa tu nombre completo" required>
+		            </div>
+		            
+		            <div class="form-group">
+		                <label for="telefonoCliente">Teléfono *</label>
+		                <input type="tel" id="telefonoCliente" placeholder="Ingresa tu teléfono" required>
+		            </div>
+		            
+		            <div class="form-group">
+		                <label for="direccionCliente">Dirección de Entrega *</label>
+		                <textarea id="direccionCliente" placeholder="Ingresa la dirección completa para la entrega" rows="3" required></textarea>
+		            </div>
+		            
+		            <div class="form-group">
+		                <label for="fechaEntrega">Fecha de Entrega *</label>
+		                <input type="date" id="fechaEntrega" required min="">
+		            </div>
+		            
+		            <div class="resumen-pedido">
+		                <h4>Resumen del Pedido</h4>
+		                <div class="resumen-item">
+		                    <span>Piñata:</span>
+		                    <span id="resumenPinata">-</span>
+		                </div>
+		                <div class="resumen-item">
+		                    <span>Medida:</span>
+		                    <span id="resumenMedida">-</span>
+		                </div>
+		                <div class="resumen-item">
+		                    <span>Precio Total:</span>
+		                    <span id="resumenPrecio">$0.00</span>
+		                </div>
+		                <div class="resumen-item anticipo">
+		                    <span>Anticipo (50%):</span>
+		                    <span id="resumenAnticipo">$0.00</span>
+		                </div>
+		            </div>
+		            
+		            <button type="submit" class="cta-button enviar-pedido-btn">
+		                <i class="fab fa-whatsapp"></i> Enviar Pedido por WhatsApp
+		            </button>
+		            
+		            <p class="nota-pedido">
+		                * Al enviar el pedido, se abrirá WhatsApp para confirmar. 
+		                Deberás pagar el anticipo del 50% para asegurar tu pedido.
+		            </p>
+		        </form>
+		    </div>
+		</div>
+                    
+                    <div class="precio-total">
+                        <strong>Total: <span id="precioSeleccionado">$0.00</span></strong>
+                    </div>
+                    
+                    <button class="cta-button pedido-btn" id="agendarPedidoBtn" disabled onclick="agendarPedido()">
+                        Agendar Pedido
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
